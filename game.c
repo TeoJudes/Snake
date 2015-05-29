@@ -74,6 +74,17 @@ int game(SDL_Surface* Screen, int score)
                 BlitAll(map, Screen, Wall ,Empty, Snake, Mush);
                 SDL_Flip(Screen);
             }
-            SDL_Quit();
-            return EXIT_SUCCESS;
+            
+        SDL_Surface *Echec = NULL;//chargement de l'écran en cas d'échec
+        SDL_Rect posEchec;
+        posEchec.x = 0;
+        posEchec.y = 0;
+        Echec = SDL_LoadBMP("Echec.bmp");
+
+
+        SDL_FillRect(Screen, NULL, SDL_MapRGB(Screen->format, 0, 0, 0));
+        SDL_BlitSurface(Echec, NULL, Screen, &posEchec);
+        SDL_Flip(Screen);
+
+    return EXIT_SUCCESS;
     }
